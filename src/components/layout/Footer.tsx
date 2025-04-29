@@ -19,7 +19,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center mb-4">
               <img 
-                src="/lovable-uploads/e2fe70f1-dacc-48e5-ba72-7e0262052608.png" 
+                src="/lovable-uploads/2b249ce4-7d8f-4896-a413-c77d555bc891.png" 
                 alt="Maa Classes Logo" 
                 className="h-12 mr-2"
               />
