@@ -84,7 +84,7 @@ const ContactInfo = () => {
                   width="100%" 
                   height="100%" 
                   style={{ border: 0, minHeight: '400px' }} 
-                  allowFullScreen="" 
+                  allowFullScreen={true} 
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
                   title="MAA Classes Location Map"
