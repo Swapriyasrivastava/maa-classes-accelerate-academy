@@ -6,7 +6,7 @@ const ProfileSection = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">Our Leadership</h2>
+        <h2 className="text-3xl font-bold text-center mb-8 text-maa-dark">Our Leadership</h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
           {/* Founder Profile */}
@@ -14,7 +14,7 @@ const ProfileSection = () => {
             <div className="md:flex">
               <div className="md:w-2/5">
                 <img 
-                  src="/lovable-uploads/f08f0c42-ecda-47c4-8a76-9167aa424571.png" 
+                  src="/lovable-uploads/0f0a2073-9fff-4b5c-a5a2-4d75e3bfc4d8.png" 
                   alt="Founder of MAA Classes" 
                   className="w-full h-full object-cover"
                 />
@@ -51,7 +51,7 @@ const ProfileSection = () => {
             <div className="md:flex">
               <div className="md:w-2/5">
                 <img 
-                  src="/lovable-uploads/a222f97e-ab1a-4f7f-9eaf-ef0aeaa1742a.png" 
+                  src="/lovable-uploads/7bcdb808-31f6-4ac0-900b-422afff378da.png" 
                   alt="Director of MAA Classes" 
                   className="w-full h-full object-cover"
                 />

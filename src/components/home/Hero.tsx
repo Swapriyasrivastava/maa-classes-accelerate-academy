@@ -34,19 +34,19 @@ const Hero = () => {
               
               {/* Floating Image Elements */}
               <img 
-                src="/lovable-uploads/05f30935-953d-44db-ba82-d1690ba2909d.png" 
-                alt="Student Success" 
-                className="absolute -top-10 -left-16 w-28 h-28 object-cover rounded-full border-4 border-white shadow-lg animate-float z-20"
+                src="/lovable-uploads/e2fe70f1-dacc-48e5-ba72-7e0262052608.png" 
+                alt="MAA Classes Logo" 
+                className="absolute -top-10 -left-16 w-28 h-28 object-contain rounded-full border-4 border-white shadow-lg animate-float z-20"
               />
               <img 
-                src="/lovable-uploads/05b7a937-ec30-4db2-a396-468c63bc42dc.png" 
-                alt="Student Success" 
+                src="/lovable-uploads/7bcdb808-31f6-4ac0-900b-422afff378da.png" 
+                alt="Director" 
                 className="absolute top-1/4 -right-10 w-24 h-24 object-cover rounded-full border-4 border-white shadow-lg animate-float animation-delay-300 z-20"
                 style={{animationDelay: '1s'}}
               />
               <img 
-                src="/lovable-uploads/d40d1104-c289-4c05-afb5-fe46b378610c.png" 
-                alt="Student Success" 
+                src="/lovable-uploads/0f0a2073-9fff-4b5c-a5a2-4d75e3bfc4d8.png" 
+                alt="Founder" 
                 className="absolute -bottom-10 -left-10 w-32 h-32 object-cover rounded-full border-4 border-white shadow-lg animate-float z-20"
                 style={{animationDelay: '2s'}}
               />

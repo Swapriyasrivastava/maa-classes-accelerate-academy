@@ -5,7 +5,7 @@ const stats = [
   {
     title: "No. 1",
     subtitle: "Coaching Institute Of Eastern India",
-    icon: "/lovable-uploads/05f30935-953d-44db-ba82-d1690ba2909d.png"
+    icon: "/lovable-uploads/e2fe70f1-dacc-48e5-ba72-7e0262052608.png"
   },
   {
     title: "14+",
