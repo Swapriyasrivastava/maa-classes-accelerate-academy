@@ -32,12 +32,7 @@ const Hero = () => {
                 className="rounded-lg shadow-2xl max-w-full w-full lg:max-w-md xl:max-w-lg relative z-10"
               />
               
-              {/* Floating Image Elements */}
-              <img 
-                src="/lovable-uploads/2b249ce4-7d8f-4896-a413-c77d555bc891.png" 
-                alt="MAA Classes Logo" 
-                className="absolute -top-10 -left-16 w-28 h-28 object-contain rounded-full border-4 border-white shadow-lg animate-float z-20"
-              />
+              {/* Floating Image Elements - Removed one logo animation */}
               <img 
                 src="/lovable-uploads/7bcdb808-31f6-4ac0-900b-422afff378da.png" 
                 alt="Director" 

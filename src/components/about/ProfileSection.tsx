@@ -13,11 +13,15 @@ const ProfileSection = () => {
           <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all">
             <div className="md:flex">
               <div className="md:w-2/5">
-                <img 
-                  src="/lovable-uploads/0f0a2073-9fff-4b5c-a5a2-4d75e3bfc4d8.png" 
-                  alt="Founder of MAA Classes" 
-                  className="w-full h-full object-cover"
-                />
+                <div className="flex items-center justify-center h-full p-4">
+                  <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-maa-blue shadow-lg">
+                    <img 
+                      src="/lovable-uploads/8a6ad804-fe3b-4305-94e0-51781bea48e4.png" 
+                      alt="Founder of MAA Classes" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
               </div>
               <div className="p-6 md:w-3/5">
                 <div className="flex items-center mb-4">
@@ -50,11 +54,15 @@ const ProfileSection = () => {
           <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all">
             <div className="md:flex">
               <div className="md:w-2/5">
-                <img 
-                  src="/lovable-uploads/7bcdb808-31f6-4ac0-900b-422afff378da.png" 
-                  alt="Director of MAA Classes" 
-                  className="w-full h-full object-cover"
-                />
+                <div className="flex items-center justify-center h-full p-4">
+                  <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-maa-orange shadow-lg">
+                    <img 
+                      src="/lovable-uploads/7bcdb808-31f6-4ac0-900b-422afff378da.png" 
+                      alt="Director of MAA Classes" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
               </div>
               <div className="p-6 md:w-3/5">
                 <div className="flex items-center mb-4">
