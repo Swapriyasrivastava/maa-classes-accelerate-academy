@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Quote } from 'lucide-react';
+import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 
 const ProfileSection = () => {
   return (
@@ -14,13 +15,14 @@ const ProfileSection = () => {
             <div className="md:flex">
               <div className="md:w-2/5">
                 <div className="flex items-center justify-center h-full p-4">
-                  <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-maa-blue shadow-lg">
-                    <img 
+                  <Avatar className="w-48 h-48 border-4 border-maa-blue shadow-lg">
+                    <AvatarImage 
                       src="/lovable-uploads/8a6ad804-fe3b-4305-94e0-51781bea48e4.png" 
-                      alt="Founder of MAA Classes" 
-                      className="w-full h-full object-cover"
+                      alt="Founder of MAA Classes"
+                      className="object-cover"
                     />
-                  </div>
+                    <AvatarFallback>KJ</AvatarFallback>
+                  </Avatar>
                 </div>
               </div>
               <div className="p-6 md:w-3/5">
@@ -55,13 +57,14 @@ const ProfileSection = () => {
             <div className="md:flex">
               <div className="md:w-2/5">
                 <div className="flex items-center justify-center h-full p-4">
-                  <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-maa-orange shadow-lg">
-                    <img 
+                  <Avatar className="w-48 h-48 border-4 border-maa-orange shadow-lg">
+                    <AvatarImage 
                       src="/lovable-uploads/7bcdb808-31f6-4ac0-900b-422afff378da.png" 
-                      alt="Director of MAA Classes" 
-                      className="w-full h-full object-cover"
+                      alt="Director of MAA Classes"
+                      className="object-cover"
                     />
-                  </div>
+                    <AvatarFallback>PS</AvatarFallback>
+                  </Avatar>
                 </div>
               </div>
               <div className="p-6 md:w-3/5">
