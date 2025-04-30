@@ -19,7 +19,8 @@ const ProfileSection = () => {
                     <AvatarImage 
                       src="/lovable-uploads/8a6ad804-fe3b-4305-94e0-51781bea48e4.png" 
                       alt="Founder of MAA Classes"
-                      className="object-cover"
+                      className="object-cover object-center"
+                      style={{ objectPosition: "50% 30%" }}
                     />
                     <AvatarFallback>KJ</AvatarFallback>
                   </Avatar>
@@ -61,7 +62,8 @@ const ProfileSection = () => {
                     <AvatarImage 
                       src="/lovable-uploads/7bcdb808-31f6-4ac0-900b-422afff378da.png" 
                       alt="Director of MAA Classes"
-                      className="object-cover"
+                      className="object-cover object-center"
+                      style={{ objectPosition: "50% 35%" }}
                     />
                     <AvatarFallback>PS</AvatarFallback>
                   </Avatar>
