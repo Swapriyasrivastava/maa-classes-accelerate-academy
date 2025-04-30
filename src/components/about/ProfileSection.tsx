@@ -22,7 +22,7 @@ const ProfileSection = () => {
                       className="object-cover object-center"
                       style={{ objectPosition: "50% 30%" }}
                     />
-                    <AvatarFallback>KJ</AvatarFallback>
+                    <AvatarFallback>SM</AvatarFallback>
                   </Avatar>
                 </div>
               </div>
@@ -30,7 +30,7 @@ const ProfileSection = () => {
                 <div className="flex items-center mb-4">
                   <div className="w-3 h-12 bg-maa-blue mr-3"></div>
                   <div>
-                    <h3 className="text-2xl font-bold text-maa-dark">Keshav Kumar Jha</h3>
+                    <h3 className="text-2xl font-bold text-maa-dark">Shivam Mishra</h3>
                     <p className="text-maa-orange font-medium">Founder</p>
                   </div>
                 </div>
@@ -65,7 +65,7 @@ const ProfileSection = () => {
                       className="object-cover object-center"
                       style={{ objectPosition: "50% 35%" }}
                     />
-                    <AvatarFallback>PS</AvatarFallback>
+                    <AvatarFallback>SM</AvatarFallback>
                   </Avatar>
                 </div>
               </div>
@@ -73,7 +73,7 @@ const ProfileSection = () => {
                 <div className="flex items-center mb-4">
                   <div className="w-3 h-12 bg-maa-orange mr-3"></div>
                   <div>
-                    <h3 className="text-2xl font-bold text-maa-dark">Priya Sharma</h3>
+                    <h3 className="text-2xl font-bold text-maa-dark">Subhangini Mishra</h3>
                     <p className="text-maa-blue font-medium">Director</p>
                   </div>
                 </div>
