@@ -27,8 +27,8 @@ const Hero = () => {
           <div className="order-1 lg:order-2 flex justify-center">
             <div className="relative">
               <img 
-                src="/lovable-uploads/e9a945f8-1d6e-49c8-9ccd-14492c9f32f0.png" 
-                alt="Students at MAA Classes" 
+                src="/lovable-uploads/0b96099a-b0ca-4308-b49b-79b04b384a46.png" 
+                alt="MAA Classes Students" 
                 className="rounded-lg shadow-2xl max-w-full w-full lg:max-w-md xl:max-w-lg relative z-10"
               />
               
