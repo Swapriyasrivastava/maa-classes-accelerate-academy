@@ -1,6 +1,7 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
+import emailjs from 'emailjs-com';
 
 const AdmissionForm = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,17 @@ const AdmissionForm = () => {
   });
   
   const [loading, setLoading] = useState(false);
+  const [emailConfigured, setEmailConfigured] = useState(false);
+  
+  // EmailJS configuration - you'll need to set these up at emailjs.com
+  useEffect(() => {
+    // Initialize EmailJS with your user ID (will be prompted for setup on first form submission)
+    if (window.emailjs) {
+      setEmailConfigured(true);
+    } else {
+      console.warn("EmailJS not properly configured. Please set up EmailJS for proper email delivery.");
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,8 +41,28 @@ const AdmissionForm = () => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    // Prepare the email template parameters
+    const templateParams = {
+      to_email: 'jhakeshavkumar62093@gmail.com',
+      from_name: formData.name,
+      from_email: formData.email,
+      parent_name: formData.parentName,
+      phone: formData.phone,
+      address: formData.address,
+      student_class: formData.class,
+      course: formData.course,
+      school: formData.school,
+      message: formData.message,
+    };
+    
+    // Using EmailJS to send the email
+    emailjs.send(
+      'default_service', // Change this to your EmailJS service ID after setup
+      'template_admission', // Change this to your EmailJS template ID after setup
+      templateParams,
+      'your_user_id' // Change this to your EmailJS user ID after setup
+    )
+    .then(() => {
       toast.success('Admission enquiry submitted successfully! We will contact you soon.', {
         description: 'Thank you for your interest in MAA Classes.',
         duration: 5000
@@ -48,23 +80,36 @@ const AdmissionForm = () => {
         school: '',
         message: ''
       });
-      
+    })
+    .catch((error) => {
+      console.error('Email sending failed:', error);
+      toast.error('There was a problem sending your enquiry', {
+        description: 'Please try again or contact us directly at jhakeshavkumar62093@gmail.com',
+        duration: 5000
+      });
+    })
+    .finally(() => {
       setLoading(false);
-      
-      // In a real application, you would send this data to an email service
-      console.log('Form submitted:', formData);
-      console.log('This would be sent to: jhakeshavkumar62093@gmail.com');
-    }, 1500);
+    });
   };
 
+  // Form JSX - same as before
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="section-title">Admission Enquiry</h2>
         
         <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
+          {!emailConfigured && (
+            <div className="mb-6 p-4 bg-yellow-50 border border-yellow-300 rounded text-yellow-800">
+              <p className="font-medium">Email Service Setup Required</p>
+              <p className="text-sm">To receive enquiries by email, you need to create an EmailJS account and configure your service, template and user ID.</p>
+            </div>
+          )}
+          
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Student Name field */}
               <div>
                 <label htmlFor="name" className="block text-gray-700 font-medium mb-1">Student Name *</label>
                 <input
@@ -78,6 +123,7 @@ const AdmissionForm = () => {
                 />
               </div>
               
+              {/* Parent's Name field */}
               <div>
                 <label htmlFor="parentName" className="block text-gray-700 font-medium mb-1">Parent's Name *</label>
                 <input
@@ -91,6 +137,7 @@ const AdmissionForm = () => {
                 />
               </div>
               
+              {/* Email field */}
               <div>
                 <label htmlFor="email" className="block text-gray-700 font-medium mb-1">Email *</label>
                 <input
@@ -104,6 +151,7 @@ const AdmissionForm = () => {
                 />
               </div>
               
+              {/* Phone Number field */}
               <div>
                 <label htmlFor="phone" className="block text-gray-700 font-medium mb-1">Phone Number *</label>
                 <input
@@ -117,6 +165,7 @@ const AdmissionForm = () => {
                 />
               </div>
               
+              {/* Current Class field */}
               <div>
                 <label htmlFor="class" className="block text-gray-700 font-medium mb-1">Current Class *</label>
                 <select
@@ -139,6 +188,7 @@ const AdmissionForm = () => {
                 </select>
               </div>
               
+              {/* Interested Course field */}
               <div>
                 <label htmlFor="course" className="block text-gray-700 font-medium mb-1">Interested Course *</label>
                 <select
@@ -160,6 +210,7 @@ const AdmissionForm = () => {
                 </select>
               </div>
               
+              {/* Current School field */}
               <div>
                 <label htmlFor="school" className="block text-gray-700 font-medium mb-1">Current School</label>
                 <input
@@ -172,6 +223,7 @@ const AdmissionForm = () => {
                 />
               </div>
               
+              {/* Address field */}
               <div>
                 <label htmlFor="address" className="block text-gray-700 font-medium mb-1">Address</label>
                 <input
@@ -185,6 +237,7 @@ const AdmissionForm = () => {
               </div>
             </div>
             
+            {/* Message field */}
             <div>
               <label htmlFor="message" className="block text-gray-700 font-medium mb-1">Message</label>
               <textarea
@@ -197,6 +250,7 @@ const AdmissionForm = () => {
               ></textarea>
             </div>
             
+            {/* Submit button */}
             <div className="flex justify-center pt-4">
               <button 
                 type="submit" 
