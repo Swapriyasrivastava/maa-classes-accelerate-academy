@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { WhatsApp } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 const WhatsAppButton = () => {
   const [showButton, setShowButton] = useState(true);
@@ -49,7 +49,7 @@ const WhatsAppButton = () => {
         className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg flex items-center gap-2 transition-all hover:scale-105"
         aria-label="Chat on WhatsApp"
       >
-        <WhatsApp size={24} />
+        <MessageCircle size={24} />
         <span className="font-medium">Chat with us</span>
       </button>
     </div>
