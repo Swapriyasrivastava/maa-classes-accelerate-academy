@@ -1,32 +1,58 @@
 
-import React, { useState } from 'react';
-import { FileText, Clock, CheckCircle, XCircle, BarChart } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { FileText, Clock, CheckCircle, XCircle, BarChart, ArrowRight, ArrowLeft } from 'lucide-react';
+import { toast } from 'sonner';
+
+// Sample database of test questions
+const questionDatabase = {
+  'cbse-6-math': [
+    { id: 1, question: "What is the value of 5² × 4³?", options: ["120", "320", "400", "500"], correct: 2 },
+    { id: 2, question: "If a = 5 and b = 7, what is the value of a² + b²?", options: ["24", "49", "25", "74"], correct: 3 },
+    { id: 3, question: "Simplify: 3(x + 5) - 2(x - 3)", options: ["x + 9", "x + 21", "5x + 12", "x + 15"], correct: 1 },
+    { id: 4, question: "Find the perimeter of a square with side length 8 cm.", options: ["32 cm", "64 cm", "16 cm", "24 cm"], correct: 0 },
+    { id: 5, question: "What fraction of an hour is 15 minutes?", options: ["1/4", "1/3", "1/5", "1/6"], correct: 0 },
+  ],
+  'cbse-6-science': [
+    { id: 1, question: "Which of the following is a plant cell organelle not found in animal cells?", options: ["Mitochondria", "Chloroplast", "Nucleus", "Ribosome"], correct: 1 },
+    { id: 2, question: "Which of these is NOT a natural satellite?", options: ["Moon", "Europa", "ISS", "Titan"], correct: 2 },
+    { id: 3, question: "Which gas do plants absorb from the atmosphere during photosynthesis?", options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"], correct: 1 },
+    { id: 4, question: "What is the chemical symbol for gold?", options: ["Go", "Gd", "Au", "Ag"], correct: 2 },
+    { id: 5, question: "Which organ is primarily responsible for filtering blood in the human body?", options: ["Heart", "Kidneys", "Lungs", "Liver"], correct: 1 },
+  ],
+  'jee-physics-1': [
+    { id: 1, question: "A body is projected vertically upward with a velocity of 49 m/s. When will it return to its starting point? (Take g = 9.8 m/s²)", options: ["5 s", "10 s", "7.5 s", "15 s"], correct: 1 },
+    { id: 2, question: "Two particles of masses m and 2m are moving with equal kinetic energies. The ratio of their linear momenta is:", options: ["1:2", "1:√2", "√2:1", "1:1"], correct: 1 },
+    { id: 3, question: "The equivalent resistance between points A and B in the circuit shown is:", options: ["1Ω", "2Ω", "3Ω", "4Ω"], correct: 2 },
+    { id: 4, question: "A spring has a spring constant of 200 N/m. The work required to compress it by 5 cm from its natural length is:", options: ["0.25 J", "0.5 J", "1 J", "2.5 J"], correct: 0 },
+    { id: 5, question: "A particle is moving in a circular path of radius r with a constant speed v. The angular momentum of the particle about the center is:", options: ["mvr", "mv/r", "mv²/r", "mr²v"], correct: 0 },
+  ],
+};
 
 // Sample test categories
 const testCategories = [
   { id: 'cbse', name: 'CBSE (Class 6-10)', tests: [
-    { id: 'cbse-6-math', name: 'Class 6 - Mathematics', questions: 25, duration: 45 },
-    { id: 'cbse-6-science', name: 'Class 6 - Science', questions: 25, duration: 45 },
-    { id: 'cbse-7-math', name: 'Class 7 - Mathematics', questions: 25, duration: 45 },
-    { id: 'cbse-7-science', name: 'Class 7 - Science', questions: 25, duration: 45 }
+    { id: 'cbse-6-math', name: 'Class 6 - Mathematics', questions: 5, duration: 10 },
+    { id: 'cbse-6-science', name: 'Class 6 - Science', questions: 5, duration: 10 },
+    { id: 'cbse-7-math', name: 'Class 7 - Mathematics', questions: 5, duration: 10 },
+    { id: 'cbse-7-science', name: 'Class 7 - Science', questions: 5, duration: 10 }
   ]},
   { id: 'icse', name: 'ICSE (Class 6-10)', tests: [
-    { id: 'icse-6-math', name: 'Class 6 - Mathematics', questions: 25, duration: 45 },
-    { id: 'icse-6-science', name: 'Class 6 - Science', questions: 25, duration: 45 },
-    { id: 'icse-7-math', name: 'Class 7 - Mathematics', questions: 25, duration: 45 },
-    { id: 'icse-7-science', name: 'Class 7 - Science', questions: 25, duration: 45 }
+    { id: 'icse-6-math', name: 'Class 6 - Mathematics', questions: 5, duration: 10 },
+    { id: 'icse-6-science', name: 'Class 6 - Science', questions: 5, duration: 10 },
+    { id: 'icse-7-math', name: 'Class 7 - Mathematics', questions: 5, duration: 10 },
+    { id: 'icse-7-science', name: 'Class 7 - Science', questions: 5, duration: 10 }
   ]},
   { id: 'jee', name: 'JEE Main', tests: [
-    { id: 'jee-physics-1', name: 'Physics - Set 1', questions: 30, duration: 60 },
-    { id: 'jee-chemistry-1', name: 'Chemistry - Set 1', questions: 30, duration: 60 },
-    { id: 'jee-math-1', name: 'Mathematics - Set 1', questions: 30, duration: 60 },
-    { id: 'jee-full-1', name: 'Full Test - Set 1', questions: 90, duration: 180 }
+    { id: 'jee-physics-1', name: 'Physics - Set 1', questions: 5, duration: 10 },
+    { id: 'jee-chemistry-1', name: 'Chemistry - Set 1', questions: 5, duration: 10 },
+    { id: 'jee-math-1', name: 'Mathematics - Set 1', questions: 5, duration: 10 },
+    { id: 'jee-full-1', name: 'Full Test - Set 1', questions: 15, duration: 30 }
   ]},
   { id: 'neet', name: 'NEET-UG', tests: [
-    { id: 'neet-physics-1', name: 'Physics - Set 1', questions: 45, duration: 60 },
-    { id: 'neet-chemistry-1', name: 'Chemistry - Set 1', questions: 45, duration: 60 },
-    { id: 'neet-biology-1', name: 'Biology - Set 1', questions: 90, duration: 120 },
-    { id: 'neet-full-1', name: 'Full Test - Set 1', questions: 180, duration: 180 }
+    { id: 'neet-physics-1', name: 'Physics - Set 1', questions: 5, duration: 10 },
+    { id: 'neet-chemistry-1', name: 'Chemistry - Set 1', questions: 5, duration: 10 },
+    { id: 'neet-biology-1', name: 'Biology - Set 1', questions: 5, duration: 10 },
+    { id: 'neet-full-1', name: 'Full Test - Set 1', questions: 15, duration: 30 }
   ]}
 ];
 
@@ -35,33 +61,113 @@ const TakeTest = () => {
   const [selectedTest, setSelectedTest] = useState(null);
   const [showResults, setShowResults] = useState(false);
   const [testResult, setTestResult] = useState(null);
+  const [currentQuestions, setCurrentQuestions] = useState([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [timeRemaining, setTimeRemaining] = useState(0);
   
   const activeTests = testCategories.find(cat => cat.id === activeCategory)?.tests || [];
 
+  // Timer functionality
+  useEffect(() => {
+    let timer;
+    if (selectedTest && timeRemaining > 0) {
+      timer = setTimeout(() => {
+        setTimeRemaining(prev => prev - 1);
+      }, 1000);
+
+      if (timeRemaining === 30) {
+        toast.warning("Only 30 seconds remaining!", {
+          description: "Please complete your test soon.",
+        });
+      }
+
+      if (timeRemaining === 0) {
+        handleSubmitTest();
+      }
+    }
+    
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [selectedTest, timeRemaining]);
+
+  const formatTime = (seconds) => {
+    const min = Math.floor(seconds / 60);
+    const sec = seconds % 60;
+    return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+  };
+
   const handleTakeTest = (test) => {
+    // Get questions for this test
+    const questions = questionDatabase[test.id] || [];
+    
+    if (questions.length === 0) {
+      toast.error("No questions available for this test yet.", {
+        description: "Please try another test or check back later."
+      });
+      return;
+    }
+    
     setSelectedTest(test);
+    setCurrentQuestions(questions);
+    setCurrentQuestionIndex(0);
+    setAnswers({});
     setShowResults(false);
+    setTimeRemaining(test.duration * 60); // Convert minutes to seconds
+  };
+
+  const handleAnswer = (questionId, optionIndex) => {
+    setAnswers(prev => ({
+      ...prev,
+      [questionId]: optionIndex
+    }));
+  };
+
+  const handleNextQuestion = () => {
+    if (currentQuestionIndex < currentQuestions.length - 1) {
+      setCurrentQuestionIndex(prev => prev + 1);
+    }
+  };
+
+  const handlePreviousQuestion = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(prev => prev - 1);
+    }
   };
 
   const handleSubmitTest = () => {
-    // Simulate test results
-    const attempted = Math.floor(Math.random() * (test.questions - 10)) + 10;
-    const correct = Math.floor(Math.random() * attempted);
-    const incorrect = attempted - correct;
-    const score = Math.floor((correct / test.questions) * 100);
+    // Calculate results
+    let correct = 0;
+    let incorrect = 0;
+    let attempted = 0;
+
+    currentQuestions.forEach(question => {
+      if (answers[question.id] !== undefined) {
+        attempted++;
+        if (answers[question.id] === question.correct) {
+          correct++;
+        } else {
+          incorrect++;
+        }
+      }
+    });
+    
+    const score = Math.floor((correct / currentQuestions.length) * 100);
     
     setTestResult({
       attempted,
       correct,
       incorrect,
       score,
-      total: test.questions
+      total: currentQuestions.length
     });
     
     setShowResults(true);
   };
 
-  const test = selectedTest || (activeTests.length > 0 ? activeTests[0] : null);
+  const isTestActive = selectedTest && !showResults;
+  const currentQuestion = isTestActive && currentQuestions[currentQuestionIndex];
 
   return (
     <section className="py-16 bg-gray-50">
@@ -189,38 +295,96 @@ const TakeTest = () => {
             </div>
           </div>
         ) : (
-          // Test interface
+          // Test interface with questions
           <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
             <div className="flex justify-between items-center mb-8">
-              <h3 className="text-xl font-bold text-maa-dark">{test.name}</h3>
+              <h3 className="text-xl font-bold text-maa-dark">{selectedTest.name}</h3>
               <div className="flex items-center text-gray-600">
                 <Clock size={18} className="mr-2" />
-                <span>{test.duration} minutes</span>
+                <span className="font-bold">{formatTime(timeRemaining)}</span>
               </div>
             </div>
             
-            <p className="bg-blue-50 p-4 rounded text-maa-blue mb-8">
-              This is a sample test interface. In a real implementation, the actual test questions would be displayed here.
-            </p>
-            
+            {/* Question display */}
             <div className="mb-8">
-              <h4 className="font-semibold mb-4">Test Instructions:</h4>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
-                <li>This test contains {test.questions} multiple choice questions.</li>
-                <li>Each question has only one correct answer.</li>
-                <li>There is no negative marking for wrong answers.</li>
-                <li>You have {test.duration} minutes to complete the test.</li>
-                <li>Click on Submit Test button after completing all questions.</li>
-              </ul>
+              <div className="bg-blue-50 p-4 rounded mb-6">
+                <p className="font-medium text-lg">
+                  Question {currentQuestionIndex + 1} of {currentQuestions.length}
+                </p>
+                <p className="text-lg mt-2">{currentQuestion.question}</p>
+              </div>
+              
+              <div className="space-y-3 mt-6">
+                {currentQuestion.options.map((option, index) => (
+                  <label 
+                    key={index}
+                    className={`block p-4 border rounded-lg cursor-pointer transition-colors ${
+                      answers[currentQuestion.id] === index
+                        ? 'border-maa-blue bg-blue-50'
+                        : 'border-gray-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <div className="flex items-center">
+                      <input
+                        type="radio"
+                        name={`question-${currentQuestion.id}`}
+                        value={index}
+                        checked={answers[currentQuestion.id] === index}
+                        onChange={() => handleAnswer(currentQuestion.id, index)}
+                        className="mr-3"
+                      />
+                      <span>{option}</span>
+                    </div>
+                  </label>
+                ))}
+              </div>
             </div>
             
-            <div className="mt-12 text-center">
-              <button 
-                onClick={handleSubmitTest}
-                className="btn-primary px-8"
+            {/* Navigation buttons */}
+            <div className="flex justify-between items-center mt-8">
+              <button
+                disabled={currentQuestionIndex === 0}
+                onClick={handlePreviousQuestion}
+                className={`flex items-center px-4 py-2 rounded ${
+                  currentQuestionIndex === 0
+                    ? 'text-gray-400 cursor-not-allowed'
+                    : 'text-maa-blue hover:bg-blue-50'
+                }`}
               >
-                Submit Test
+                <ArrowLeft size={18} className="mr-2" /> Previous
               </button>
+              
+              {currentQuestionIndex === currentQuestions.length - 1 ? (
+                <button 
+                  onClick={handleSubmitTest}
+                  className="btn-primary"
+                >
+                  Submit Test
+                </button>
+              ) : (
+                <button
+                  onClick={handleNextQuestion}
+                  className="flex items-center px-4 py-2 text-maa-blue hover:bg-blue-50 rounded"
+                >
+                  Next <ArrowRight size={18} className="ml-2" />
+                </button>
+              )}
+            </div>
+
+            {/* Progress indicator */}
+            <div className="mt-8">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-gray-500">Progress</span>
+                <span className="text-sm text-gray-500">
+                  {Object.keys(answers).length} of {currentQuestions.length} questions answered
+                </span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2.5">
+                <div 
+                  className="bg-maa-blue h-2.5 rounded-full" 
+                  style={{ width: `${(Object.keys(answers).length / currentQuestions.length) * 100}%` }}
+                ></div>
+              </div>
             </div>
           </div>
         )}

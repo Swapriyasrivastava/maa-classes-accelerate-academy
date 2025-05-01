@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Instagram, Youtube, Twitter, ArrowUp } from 'lucide-react';
@@ -25,7 +24,7 @@ const Footer = () => {
               />
               <div>
                 <h3 className="text-xl font-bold">MAA CLASSES</h3>
-                <p className="text-xs text-maa-orange font-medium">Go fat go fast</p>
+                <p className="text-xs text-maa-orange font-medium">Be The Best With The Best</p>
               </div>
             </div>
             <p className="text-gray-300 mb-4">

@@ -37,7 +37,7 @@ const Header = () => {
             />
             <div className="hidden md:block">
               <h1 className="text-xl font-bold text-maa-blue">MAA CLASSES</h1>
-              <p className="text-xs text-maa-orange font-medium">Go fat go fast</p>
+              <p className="text-xs text-maa-orange font-medium">Be The Best With The Best</p>
             </div>
           </Link>
         </div>

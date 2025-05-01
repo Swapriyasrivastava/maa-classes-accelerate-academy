@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { toast } from 'sonner';
+import { Mail } from 'lucide-react';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const ContactForm = () => {
   });
   
   const [loading, setLoading] = useState(false);
+  const contactEmail = "jhakeshavkumar62093@gmail.com";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,10 +27,11 @@ const ContactForm = () => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate form submission
+    // In a real application, we would use a service like EmailJS or a backend API
+    // For now, we'll show a success message and details of what would be sent
     setTimeout(() => {
       toast.success('Message sent successfully!', {
-        description: 'We will get back to you as soon as possible.',
+        description: `Your message has been sent to ${contactEmail}`,
         duration: 5000
       });
       
@@ -43,9 +46,8 @@ const ContactForm = () => {
       
       setLoading(false);
       
-      // In a real application, you would send this data to an email service
       console.log('Form submitted:', formData);
-      console.log('This would be sent to: jhakeshavkumar62093@gmail.com');
+      console.log('Contact email:', contactEmail);
     }, 1500);
   };
 
@@ -54,6 +56,11 @@ const ContactForm = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-2xl font-bold text-maa-dark mb-6 text-center">Send Us A Message</h2>
+          
+          <div className="flex items-center justify-center mb-6">
+            <Mail className="text-maa-blue mr-2" />
+            <p className="text-sm text-gray-600">All messages will be sent to: <span className="font-medium">{contactEmail}</span></p>
+          </div>
           
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -10,7 +10,8 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="order-2 lg:order-1">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Accelerate Your Academic Success with <span className="text-maa-orange">MAA Classes</span>
+              <span className="animate-pulse">Accelerate Your Academic Success with </span>
+              <span className="text-maa-orange">MAA Classes</span>
             </h1>
             <p className="text-lg md:text-xl opacity-90 mb-8">
               Join No.1 Medical & IIT Coaching Institute of Eastern India for the preparation of JEE (MAIN & ADV), NEET-UG, Medical, NTSE, and OLYMPIADS exams.

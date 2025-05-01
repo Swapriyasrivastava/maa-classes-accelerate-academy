@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Play, ChevronRight, ChevronLeft } from 'lucide-react';
 
@@ -67,7 +66,7 @@ const TestimonialCard = ({ video }) => {
           />
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-30 transition-all">
             <div className="w-16 h-16 rounded-full bg-maa-orange flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Play size={30} className="text-white ml-1" />
+              <Play size={30} className="text-white ml-1 animate-pulse" />
             </div>
           </div>
         </div>

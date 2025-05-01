@@ -15,6 +15,7 @@ import Test from "./pages/Test";
 import Brochure from "./pages/Brochure";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
+import WhatsAppButton from "./components/common/WhatsAppButton";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <WhatsAppButton />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
