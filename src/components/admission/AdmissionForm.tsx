@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import emailjs from 'emailjs-com';
@@ -21,8 +20,8 @@ const AdmissionForm = () => {
   
   // EmailJS configuration - you'll need to set these up at emailjs.com
   useEffect(() => {
-    // Initialize EmailJS with your user ID (will be prompted for setup on first form submission)
-    if (window.emailjs) {
+    // Check if EmailJS is available without using window.emailjs
+    if (emailjs) {
       setEmailConfigured(true);
     } else {
       console.warn("EmailJS not properly configured. Please set up EmailJS for proper email delivery.");
