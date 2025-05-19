@@ -16,6 +16,7 @@ import Brochure from "./pages/Brochure";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import WhatsAppButton from "./components/common/WhatsAppButton";
+import Jobs from "./pages/Jobs";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/test" element={<Test />} />
           <Route path="/brochure" element={<Brochure />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/jobs" element={<Jobs />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
