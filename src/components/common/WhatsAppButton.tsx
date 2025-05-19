@@ -40,7 +40,7 @@ const WhatsAppButton = () => {
 
   return (
     <div 
-      className={`fixed left-1/2 transform -translate-x-1/2 bottom-8 z-40 transition-all duration-300 ${
+      className={`fixed right-6 bottom-8 z-40 transition-all duration-300 ${
         showButton ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
       }`}
     >

@@ -50,6 +50,7 @@ const Header = () => {
           <Link to="/courses" className="nav-link">Courses</Link>
           <Link to="/admission" className="nav-link">Admission</Link>
           <Link to="/gallery" className="nav-link">Gallery</Link>
+          <Link to="/jobs" className="nav-link">Jobs</Link>
           <Link to="/contact" className="nav-link">Get in touch</Link>
         </nav>
 
@@ -72,6 +73,7 @@ const Header = () => {
               <Link to="/courses" className="px-4 py-3 hover:bg-gray-100" onClick={toggleMobileMenu}>Courses</Link>
               <Link to="/admission" className="px-4 py-3 hover:bg-gray-100" onClick={toggleMobileMenu}>Admission</Link>
               <Link to="/gallery" className="px-4 py-3 hover:bg-gray-100" onClick={toggleMobileMenu}>Gallery</Link>
+              <Link to="/jobs" className="px-4 py-3 hover:bg-gray-100" onClick={toggleMobileMenu}>Jobs</Link>
               <Link to="/contact" className="px-4 py-3 hover:bg-gray-100" onClick={toggleMobileMenu}>Get in touch</Link>
             </nav>
           </div>

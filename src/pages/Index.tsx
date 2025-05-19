@@ -8,6 +8,8 @@ import Features from '../components/home/Features';
 import Toppers from '../components/home/Toppers';
 import Testimonials from '../components/home/Testimonials';
 import WhyJoin from '../components/home/WhyJoin';
+import NoticeMarquee from '../components/home/NoticeMarquee';
+import FounderMessage from '../components/home/FounderMessage';
 
 const Index = () => {
   return (
@@ -15,7 +17,9 @@ const Index = () => {
       <Header />
       <main className="flex-grow pt-16">
         <Hero />
+        <NoticeMarquee />
         <StatsCounter />
+        <FounderMessage />
         <Features />
         <Toppers />
         <Testimonials />
